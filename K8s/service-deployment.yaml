@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: recomm_song
+spec:
+  type: LoadBalancer
+  selector:
+    app: recomm_song
+  ports:
+  - port: 80
+    targetPort: 8501
