@@ -20,6 +20,7 @@ steps:
   - 'managed'
   - '--allow-unauthenticated'
   waitFor: ['push-image-to-container-registry']
+  id: 'deploy-to-cloud-run'
 images:
 - 'gcr.io/$PROJECT_ID/myapp:latest'
 - 'gcr.io/$PROJECT_ID/myapp:$COMMIT_SHA'
