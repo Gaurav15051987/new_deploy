@@ -15,7 +15,7 @@ steps:
   - '--image'
   - 'gcr.io/$PROJECT_ID/myapp:$COMMIT_SHA'
   - '--region'
-  - 'global (non-regional)'
+  - 'us-central1'
   - '--platform'
   - 'managed'
   - '--allow-unauthenticated'
