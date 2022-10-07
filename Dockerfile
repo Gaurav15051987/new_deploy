@@ -1,8 +1,10 @@
-FROM python:3.7
+FROM python:3.8
+RUN pip install --upgrade pip
 RUN mkdir /app
 WORKDIR /app/
 # Copy the rest of the codebase into the image
 COPY . ./
 COPY requirements.txt .
+
 RUN pip install -r requirements.txt
-CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 app:app
+CMD ["python", "./app.py"]
