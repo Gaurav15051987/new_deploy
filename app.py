@@ -39,5 +39,5 @@ def recommend():
     return output_json
 
 
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0',port=8050)
+#if __name__ == '__main__':
+#    app.run(debug=True, host='0.0.0.0',port=8050)
