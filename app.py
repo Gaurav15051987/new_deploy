@@ -16,8 +16,8 @@ app = Flask(__name__)
 @app.route('/')
 def main_page():
         # json_without_slash
-    final_json=json_without_slash
-    return jsonify(final_json)
+    #final_json=json_without_slash
+    return "Welcome"
 
 
 @app.route('/recommend')
