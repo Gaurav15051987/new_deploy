@@ -47,4 +47,3 @@ artifacts:
   objects:
     location: 'gs://devops-$PROJECT_ID/$BUILD_ID'
     paths: ['artifacts.tar.gz']
-    
