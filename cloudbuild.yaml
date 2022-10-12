@@ -25,11 +25,11 @@ steps:
   volumes:
   - name: 'vol1'
     path: '/myawesomevolume'
-  entrypoint: '/bin/bash'
+  entrypoint: '/bin/sh'
   args: ['-c', 'gcloud builds log $BUILD_ID > /myawesomevolume/buildlog.log']
   waitFor: ['deploy-to-cloud-run']
   id: 'fetch-build-log'
-- name: 'bash'
+- name: 'sh'
   volumes:
   - name: 'vol1'
     path: '/myawesomevolume'
