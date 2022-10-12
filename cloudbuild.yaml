@@ -24,18 +24,21 @@ steps:
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
   volumes:
   - name: 'vol1'
-    path: '/grantaccess'
+    path: '/myawesomevolume'
   entrypoint: '/bin/bash'
-  args: ['-c', 'gcloud builds log $BUILD_ID > /grantaccess/buildlog.log']
+  args: ['-c', 'gcloud builds log $BUILD_ID > /myawesomevolume/buildlog.log']
   waitFor: ['deploy-to-cloud-run']
   id: 'fetch-build-log'
 - name: 'bash'
   volumes:
   - name: 'vol1'
-    path: '/grantaccess'
-  args: ['tar', '-czvf', 'artifacts.tar.gz', 'app', 'requirements.txt', '/grantaccess/buildlog.log']
+    path: '/myawesomevolume'
+  args: ['tar', '-czvf', 'artifacts.tar.gz', 'app', 'requirements.txt', '/myawesomevolume/buildlog.log']
   waitFor: ['fetch-build-log']
   id: 'create-artifacts-zip'
+logsBucket: 'gs://logs-codebuild-$PROJECT_ID/$BUILD_ID'
+options:
+  logging: GCS_ONLY
 images:
 - 'gcr.io/$PROJECT_ID/myapp:latest'
 - 'gcr.io/$PROJECT_ID/myapp:$COMMIT_SHA'
@@ -44,3 +47,4 @@ artifacts:
   objects:
     location: 'gs://devops-$PROJECT_ID/$BUILD_ID'
     paths: ['artifacts.tar.gz']
+
