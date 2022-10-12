@@ -24,16 +24,16 @@ steps:
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
   volumes:
   - name: 'vol1'
-    path: '/myawesomevolume'
+    path: '/grantaccess'
   entrypoint: '/bin/bash'
-  args: ['-c', 'gcloud builds log $BUILD_ID > /myawesomevolume/buildlog.log']
+  args: ['-c', 'gcloud builds log $BUILD_ID > /grantaccess/buildlog.log']
   waitFor: ['deploy-to-cloud-run']
   id: 'fetch-build-log'
 - name: 'bash'
   volumes:
   - name: 'vol1'
-    path: '/myawesomevolume'
-  args: ['tar', '-czvf', 'artifacts.tar.gz', 'app', 'requirements.txt', '/myawesomevolume/buildlog.log']
+    path: '/grantaccess'
+  args: ['tar', '-czvf', 'artifacts.tar.gz', 'app', 'requirements.txt', '/grantaccess/buildlog.log']
   waitFor: ['fetch-build-log']
   id: 'create-artifacts-zip'
 images:
