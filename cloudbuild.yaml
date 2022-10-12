@@ -27,5 +27,5 @@ images:
 - 'gcr.io/$PROJECT_ID/myapp:$BUILD_ID'
 artifacts:
   objects:
-    location: 'gs://grantaccess-$PROJECT_ID/$BUILD_ID'
+    location: 'gs://devops-$PROJECT_ID/$BUILD_ID'
     paths: ['artifacts.tar.gz']
